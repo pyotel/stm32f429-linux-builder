@@ -37,7 +37,7 @@ Build Instructions
     kernel_target = $(target_out)/kernel/arch/arm/boot/xipuImage.bin ==> 0x08020000
     rootfs_target = $(target_out)/romfs.bin ==> 0x08120000
 ```
-Be patient when OpenOCD is flashing. Typically, it takes about 55 seconds.
+Be patient when ST-LINK is flashing. Typically, it takes about 55 seconds.
 Use `make help` to get detailed build targets.
 
 
