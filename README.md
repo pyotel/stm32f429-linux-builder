@@ -11,19 +11,6 @@ Prerequisites
 The builder requires that various tools and packages be available for use in
 the build procedure:
 
-* [OpenOCD](http://openocd.sourceforge.net/)
-  - OpenOCD 0.7.0 (and the 0.7.0-2 from Debian) can't write romfs to flash
-    because of a post-0.7.0-stable bug (bad flash detection on stm32f429).
-    You need to use 0.8.0 development version.
-```
-    git clone git://git.code.sf.net/p/openocd/code openocd
-    cd openocd
-    ./bootstrap
-    ./configure --prefix=/usr/local --enable-stlink
-    echo -e "all:\ninstall:" > doc/Makefile
-    make
-    sudo make install
-```
 * Set ARM/uClinux Toolchain:
   - Download [arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2](https://sourcery.mentor.com/public/gnu_toolchain/arm-uclinuxeabi/arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2) from Mentor Graphics
   - only arm-2010q1 is known to work; don't use SourceryG++ arm-2011.03
@@ -31,9 +18,9 @@ the build procedure:
     tar jxvf arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2
     export PATH=`pwd`/arm-2010q1/bin:$PATH
 ```
-* [genromfs](http://romfs.sourceforge.net/)
+* [genromfs](http://romfs.sourceforge.net/) & other package for X86-64
 ```
-    sudo apt-get install genromfs
+    sudo apt-get install -y libc6-i386 libc6:i386 libncurses5:i386 libstdc++6:i386 genromfs
 ```
 
 
@@ -43,9 +30,11 @@ Build Instructions
 ```
     make
 ```
-* Once STM32F429 Discovery board is properly connected via USB wire to Linux host, you can execute ``make install`` to flash the device. Note: you have to ensure the installation of the latest OpenOCD in advance.
+* Using ST-LINK, upload next binary images :
 ```
-    make install
+    uboot_target = $(target_out)/uboot/u-boot.bin  ==> 0x08000000
+    kernel_target = $(target_out)/kernel/arch/arm/boot/xipuImage.bin ==> 0x08020000
+    rootfs_target = $(target_out)/romfs.bin ==> 0x08120000
 ```
 Be patient when OpenOCD is flashing. Typically, it takes about 55 seconds.
 Use `make help` to get detailed build targets.
