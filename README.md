@@ -12,14 +12,12 @@ The builder requires that various tools and packages be available for use in
 the build procedure:
 
 * Set ARM/uClinux Toolchain:
-  - Download [arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2](https://sourcery.mentor.com/public/gnu_toolchain/arm-uclinuxeabi/arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2) from Mentor Graphics
-  - only arm-2010q1 is known to work; don't use SourceryG++ arm-2011.03
+  - Set path for tool-chain
 ```
-    wget https://sourcery.mentor.com/public/gnu_toolchain/arm-uclinuxeabi/arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2
-    tar jxvf arm-2010q1-189-arm-uclinuxeabi-i686-pc-linux-gnu.tar.bz2
-    export PATH=`pwd`/arm-2010q1/bin:$PATH
+    echo "PATH=`pwd`/tool-chain/arm-2010q1/bin:$PATH" >> ~/.bashrc
+    source ~/.bashrc
 ```
-* [genromfs](http://romfs.sourceforge.net/) & other package for X86-64
+* Install [genromfs](http://romfs.sourceforge.net/) & other package for X86-64
 ```
     sudo apt-get install -y libc6-i386 libc6:i386 libncurses5:i386 libstdc++6:i386 genromfs
 ```
