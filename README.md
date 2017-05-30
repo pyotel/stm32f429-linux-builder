@@ -56,11 +56,12 @@ the converter, and the TX of the USART3 to the RX of the converter:
 * pin PC10 -> TXD
 * pin PC11 -> RXD
 
+<img width="300" height="400" src="https://github.com/pyotel/stm32f429-linux-builder/blob/master/pin_connect_usart.jpg"></img>
 
 Reference Boot Messages
 =======================
 ```
-U-Boot 2010.03-00003-g934021a-dirty (Jan 02 2017 - 10:42:47)
+U-Boot 2010.03-00003-g934021a (Apr 18 2017 - 14:13:00)
 
 CPU  : STM32F4 (Cortex-M4)
 Freqs: SYSCLK=180MHz,HCLK=180MHz,PCLK1=45MHz,PCLK2=90MHz
@@ -69,9 +70,19 @@ DRAM:   8 MB
 Using default environment
 
 Hit any key to stop autoboot:  0
+## Booting kernel from Legacy Image at 08020000 ...
+   Image Name:   Linux-2.6.33-arm1
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    738336 Bytes = 721 kB
+   Load Address: 08020040
+   Entry Point:  08020041
+   Verifying Checksum ... OK
+   Loading Kernel Image ... OK
+OK
+
 Starting kernel ...
 
-Linux version 2.6.33-arm1 (inpyo@inpyo-ubuntu) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-189) ) #1 Fri Dec 30 09:36:52 KST 2016
+Linux version 2.6.33-arm1 (inpyo@inpyo-VirtualBox) (gcc version 4.4.1 (Sourcery G++ Lite 2010q1-189) ) #1 Tue Apr 18 14:14:25 KST 2017
 CPU: ARMv7-M Processor [410fc241] revision 1 (ARMv7M)
 CPU: NO data cache, NO instruction cache
 Machine: STMicro STM32
@@ -108,9 +119,9 @@ Serial: STM32 USART driver
 stm32serial.2: ttyS2 at MMIO 0x40004800 (irq = 39) is a STM32 USART Port
 console [ttyS2] enabled
 brd: module loaded
-uclinux[mtd]: ROM probe address=0x8120000 size=0x59000
+uclinux[mtd]: ROM probe address=0x8120000 size=0xde000
 Creating 1 MTD partitions on "ROM":
-0x000000000000-0x000000059000 : "ROMfs" 
+0x000000000000-0x0000000de000 : "ROMfs"
 ARMv7-M VFP Extension supported
 VFS: Mounted root (romfs filesystem) readonly on device 31:0.
 Freeing init memory: 16K
